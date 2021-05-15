@@ -1,6 +1,6 @@
 import CollectionOverview from './../../components/collection-overview/collection-overview.component';
 import CategoryPage from './../category/category.component';
-import {Route, Switch } from 'react-router-dom';
+import {Route} from 'react-router-dom';
 import React from 'react';
 
 const ShopPage = ({ match }) => {

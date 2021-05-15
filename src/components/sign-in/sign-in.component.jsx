@@ -24,7 +24,7 @@ class SignIn extends React.Component {
     handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const user = await auth.signInWithEmailAndPassword(this.state.email, this.state.password);
+            await auth.signInWithEmailAndPassword(this.state.email, this.state.password);
             this.setState({
                 email: '',
                 password: ''
