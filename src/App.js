@@ -1,6 +1,7 @@
 import Homepage from './pages/homepage.component';
 import ShopPage from './pages/shop/shoppage.component';
 import Header from './components/header/header.component';
+import Checkout from './pages/checkout/checkout.component';
 import SignInAndSignOut from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component.jsx';
 import './App.css';
 import {Route, Switch, Redirect} from 'react-router-dom';
@@ -12,7 +13,6 @@ import {setCurrentUser} from './pages/redux/user/user.action';
 
 class App extends React.Component {
   componentDidMount() {
-    console.log(this.props);
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
       if(user) {
         const userRef = await createUserProfileDocument(user);
@@ -37,7 +37,8 @@ class App extends React.Component {
         <Header></Header>
         <Switch>
           <Route exact={true} path='/' component={Homepage}></Route>
-          <Route exact={true} path='/shop' component={ShopPage}></Route>
+          <Route path='/shop' component={ShopPage}></Route>
+          <Route exact={true} path='/checkout' component={Checkout}></Route>
           <Route exact={true} path='/signin' render={() => 
             this.props.currentUser ? (<Redirect to='/' />) : (<SignInAndSignOut />)
           }></Route>

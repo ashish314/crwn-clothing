@@ -2,6 +2,7 @@ import './menu-item.styles.scss';
 import {withRouter} from 'react-router-dom';
 
 const MenuItem = ({title, imageUrl, size, linkUrl, history, match}) => {
+    console.log("match", `${match.url}${linkUrl}`);
     return(
         <div style={{
             backgroundImage: `url(${imageUrl})`
