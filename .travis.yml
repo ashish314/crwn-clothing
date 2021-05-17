@@ -8,7 +8,9 @@ services:
 cache: npm
 
 script:
-- docker build -t -p 80:80 crwn-clothing .
+- docker build -t crwn-clothing .
+- docker ps
+- docker run --name crwn -d -it -p 80:80 crwn-clothing 
 
 deploy:
   provider: heroku
