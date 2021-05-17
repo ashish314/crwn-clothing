@@ -1,20 +1,16 @@
 language: node_js
-node_js: 
+node_js:
 - 14.16.0
-
 services:
 - docker
-
 cache: npm
-
 script:
 - docker build -t crwn-clothing .
 - docker ps
-- docker run --name crwn -d -it -p 80:80 crwn-clothing 
-
+- docker run --name crwn -d -it -p 80:80 crwn-clothing
 deploy:
   provider: heroku
   api_key:
-    secure: "$heroku_token"
-  app: "crwn-clothing314"
-  on: "master"  
+    secure: Y/qcT0vqKAwfCkmWqhdiTWQsgvD8u/nSZJ7fJTqLCNhrmE8hLBSzdl35N+ksY8YczYg6zdDrcSmEOGDrlP43mtNwbOZUqyHUEoTca3Yd+mIEwHNh7wxWPgFRvzHP3WsbrmRu1x56Q2sdZ2iwT2pAzdQocSWr60ILHRWulrbBhT+6cx71HZbojL/sG7/WmKtROzsdxCUnRg+jz+XIWWAW0I4vrQ2ToFuHttrRwEULumBADUxWcA4gFiE/cIANHLXVSJAmwWECbVBIYhah31ck/bWdDdU9ZHYwruSK8i0pD+QrSMXf/1BE/jbNEJFLCk3CP9RVu9jOrxou9Hxpor673ReCpwLN1PNiiRN2dJhsr9tyXSKoi+rhHhCIoob7hSkdqM0WTzywFWz91z0+FcpkvhZIdnLmaeh/ylR0N9buczgKgbfaRuMllecvcFuZvdQVu4Zn2l1qzGmGh9sjQURF2BCzLzhzxXKhtlfSqGdycZrIo5LC7c51XDsfKs5BiBDVCQOgqKZRXDxpkGpJ3wTz9ZIJDnf6TaRMI9vW7oNHyDHAdGtue97DLzo+vRVNxit1xTP5y7MGbrEjXDo0rpMoYhmHmQywHdRlpL9x0fMsPGLsI25PLhtbjprXBeFSPtG2kBs27d0v5+0PE/5TYby69Hfsd2By8M+85JqBo3YubyQ=
+  app: crwn-clothing314
+  on: master
