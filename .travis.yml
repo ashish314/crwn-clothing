@@ -8,13 +8,11 @@ services:
 cache: npm
 
 script:
-- docker build -t crwn-clothing .
+- docker build -t -p 80:80 crwn-clothing .
 
 deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-  local_dir: build
-  keep_history: true
-  on:
-    branch: master
+  provider: heroku
+  api_key:
+    secure: "$heroku_token"
+  app: "crwn-clothing314"
+  on: "master"  
