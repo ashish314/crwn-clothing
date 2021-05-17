@@ -1,18 +1,22 @@
+sudo: required
 language: node_js
 node_js:
 - 14.16.0
 services:
 - docker
 cache: npm
-script:
+
+before_install:
 - docker build -t crwn-clothing .
+- docker run -d -it -p 80:80 crwn-clothing
+
+script:
 - docker ps
-- docker run --name crwn -d -it -p 80:80 crwn-clothing
+
 deploy:
   provider: heroku
   api_key:
-    secure: qr0JiISWMJ6X3ixzjdmQUDEubudea3uNSNEsbFTmJpF9zBFq2k4Ea6+HmAYG/OIBuHW0O7qkKFFDtHMEz+o2J6c/0ceBHIJrqDnjtXSo5s9V/Dbea4xcXkp1kIWrh1rLc5sWVdAWl++chQAgQXf3q5B/Dn3M4IwIlIaiHXVSPMOKetToRRrZbal3HOewYAebhGDZ1QKWpwkfRUmj0Gxl5T5dDPEBUf1Vhi4BcHQUwccMTtCk3wwnLLaux+dK21HfchvMyxAM0ucv5J27WvPxRZwMHJz+NrXrv3fxVVQEi1dyPr27dVO3oH5y3ifX8P6NnSprbNs8hzr9ULPlr7rcACIOg24I6ItCuQaVhytKFv6LCQkppUNkldGX6/QH2n9BznksxsfFbvkq24q0h5nuq8XD/hqIuyW+xorsMngE7V/hQE7UdE8Gld+VzZwZkyWjXKBaaMYx9oPWK3rndITm6XyNrtQcNA59sAxfF39SNTXSlqTkQnqomQ1ZPxHyS2EfvdqsW+nt0W1MedMFrynuHQRbrfkLKY0cCMXTwlKI/kj1WvBg00PKb7zo1839QYPyHMwGFjLY4p+1Acn0uIpQF/P40LNZknxZmkblm9vAGt6lC9guHAO3Y72xUdRJgA1evRToSHyW7UuNu0PuJIqtuUPGmzL1SxcoBeNhbpQBDWk=
-  app: crwn-clothing
-  on:
-    repo: ashish314/crwn-clothing
-  skip_cleanup: 'true'
+    secure: IimIovIBx3ifQSR4wYBJdg0oUOFWabEUo9X4KSxMK/GWsYwyG0sWkuRJ4m1TpxNuG1vC0Pn8K/GUsrSrr/cyrHroXAbDCehZGW8tkieJg7InLqfx8RCPZvl8A2tYWK/BvcfxCWCuj5W/+xYorjbwvy2F2eLNxN6l1eJ4YV7rsMeZOKCwLUN3bKzllxi8hQeTLhckWeJMf2fDB72NzqUWxeP4MB/oXKcVHVBskj+pDdSupY6MuReSeCHLxVG+p3Z8v4o1eK3LIOtxRMjPfvMuYqzOx2nECF4nIpUdM+2BNx6YHOeaVXaF1H4WzL2Uy7WNO/H05DOvYMrADLwn1gL22gPn8rf53Wy4jQVtS05lWZi68lVJE3wr6SxVyyQXOeT6SnMSHuk0Zbhk0dIVBZmhEQxgiqpq/1F2Csec/qEZKt6BEV0bUgm8H+AFFGLR1N/Yi/oUCTU/59WZn1WLMSRU+ysNLaTi3a9QdN+JhFU/Tw3YBwx+i9ErNigvAxwPwkvEeGP4rUhWk8dA71eBQEkxICYeEFsfhGzOv4WFOUPv4Flfo/cWURxxRtshvuglqDjf2+nuCvAy0/h26cQOId4+XGgiOBlfkJuRkL2LKxSEc2GyhSiBAe/Ahve7zKH+FUn5bDIhAAP66yPrGsr4rBMiJwJ1KsnPXOlRSqtYrE55Mm8=
+  app: crwn-clothing314
+  on: "master"
+  skip_cleanup: 'false'
