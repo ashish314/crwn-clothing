@@ -2,13 +2,15 @@ language: node_js
 node_js: 
 - 14.16.0
 
-services:
-- docker
-
 cache: npm
 
+#build life cycle
+install:
+- npm install
+
 script:
-- docker build -t crwn-clothing .
+- npm test
+- npm run build
 
 deploy:
   provider: pages
